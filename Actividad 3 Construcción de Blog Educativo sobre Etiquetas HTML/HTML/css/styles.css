@@ -1,0 +1,554 @@
+/* ============================================================
+   styles.css — Hoja de estilos principal del blog HTML
+   Estructura:
+   1. Fuentes externas (Google Fonts)
+   2. Variables globales
+   3. Reset
+   4. Header y navegación
+   5. Hero (solo index.html)
+   6. Contenido principal
+   7. Secciones de categoría
+   8. Tarjetas de etiquetas
+   9. Bloques de código
+   10. Caja de demostración visual
+   11. Buenas prácticas
+   12. Formulario funcional
+   13. Botones
+   14. Scrollbar personalizada
+   15. Responsive (≤ 900px y ≤ 600px)
+   16. Animación de entrada
+   ============================================================ */
+
+/* ── 1. FUENTES ──────────────────────────────────────────────
+   Se cargan 3 familias tipográficas desde Google Fonts:
+   - DM Mono: usada en código, etiquetas y subtítulos
+   - Lora: usada en el logo y títulos principales
+   - Inter: fuente base del cuerpo de texto
+   ──────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Lora:wght@400;600&family=Inter:wght@300;400;500&display=swap');
+
+/* ── 2. VARIABLES GLOBALES ───────────────────────────────────
+   Colores y valores reutilizables con var(--nombre).
+   Cambiar aquí afecta todo el sitio automáticamente.
+   ──────────────────────────────────────────────────────────── */
+:root {
+  --bg:       #f8fafc;  
+  --surface:  #fff;     
+  --surface2: #f1f5f9;  
+  --border:   #cbd5e1;   
+  --accent:   #3b82f6;  
+  --accent2:  #111112;  
+  --accent3:  #df0b04;   
+  --text:     #0f172a;   
+  --muted:    #64748b;   
+  --code-bg:  #2a5487;  
+}
+
+/* ── 3. RESET ────────────────────────────────────────────────
+   Elimina márgenes y paddings por defecto del navegador.
+   box-sizing: border-box hace que padding no aumente el tamaño.
+   scroll-behavior: smooth activa el desplazamiento suave.
+   ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif; /* Fuente base de todo el sitio */
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;      /* Espaciado entre líneas para mejor legibilidad */
+  overflow-x: hidden;     /* Evita scroll horizontal no deseado */
+}
+
+/* ── 4. HEADER Y NAVEGACIÓN ──────────────────────────────────
+   El header es sticky: se queda fijo en la parte superior
+   mientras el usuario hace scroll.
+   ──────────────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;                        /* Por encima de todo el contenido */
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 clamp(1rem, 4vw, 3rem);  /* Padding lateral fluido */
+}
+
+/* Contenedor interno del header: alinea logo, botón y nav */
+.site-header > div {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  position: relative; /* Necesario para el menú desplegable en móvil */
+}
+
+/* Logo — enlace tipográfico con fuente Lora */
+.logo {
+  font-family: 'Lora', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -.02em;
+}
+
+/* Nav en escritorio: fila horizontal de enlaces */
+.site-header nav { display: flex; }
+
+.site-header nav a {
+  font-size: .78rem;
+  text-decoration: none;
+  color: var(--muted);
+  padding: .4rem .8rem;
+  transition: color .15s;
+  white-space: nowrap; /* Evita que los enlaces se partan en dos líneas */
+}
+
+/* Estado activo o hover — cambia a color de acento */
+.site-header nav a:hover,
+.site-header nav a.active { color: var(--accent); }
+
+/* Botón hamburguesa — oculto por defecto, visible en móvil (≤900px) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  font-size: 1.2rem;
+  color: var(--text);
+  cursor: pointer;
+  padding: .35rem .65rem;
+  border-radius: 4px;
+}
+
+/* ── 5. HERO ─────────────────────────────────────────────────
+   Sección de bienvenida exclusiva de index.html.
+   Usa CSS Grid de dos columnas: texto a la izquierda,
+   imagen a la derecha.
+   ──────────────────────────────────────────────────────────── */
+.hero {
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Etiqueta monoespaciada encima del título */
+.hero-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: .65rem;
+  color: var(--accent);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+/* Título principal del hero */
+.hero h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2rem, 4.5vw, 3.8rem); /* Tamaño fluido según pantalla */
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 1.6rem;
+  letter-spacing: -.02em;
+}
+
+/* Párrafos descriptivos del hero */
+.hero p {
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.85;
+  margin-bottom: .9rem;
+  font-weight: 300;
+  max-width: 46ch; /* Limita el ancho para mejor legibilidad */
+}
+
+.hero p strong { color: var(--text); font-weight: 500; }
+
+/* Contenedor de la imagen del hero */
+.hero-img {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,.05), 0 10px 30px rgba(0,0,0,.1);
+}
+
+.hero-img img { width: 100%; height: auto; display: block; }
+
+/* ── 6. CONTENIDO PRINCIPAL ──────────────────────────────────
+   El <main> actúa como contenedor centrado de todas las páginas.
+   ──────────────────────────────────────────────────────────── */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+}
+
+/* ── 7. SECCIONES DE CATEGORÍA ───────────────────────────────
+   Cada página tiene una .category que agrupa todas las
+   tarjetas de esa temática (texto, listas, formularios…).
+   Incluye animación de entrada fadeUp al cargar.
+   ──────────────────────────────────────────────────────────── */
+.category {
+  padding-top: clamp(2rem, 5vw, 4rem);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  scroll-margin-top: 72px;       /* Compensa el header sticky al hacer scroll */
+  animation: fadeUp .4s ease both;
+}
+
+/* Retrasos escalonados para animar las secciones de a una */
+.category:nth-child(1) { animation-delay: .04s; }
+.category:nth-child(2) { animation-delay: .08s; }
+.category:nth-child(3) { animation-delay: .12s; }
+
+/* Título de la sección con línea separadora inferior */
+.category > h2 {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── 8. TARJETAS DE ETIQUETAS ────────────────────────────────
+   Cada .tag-card representa una etiqueta HTML con su
+   definición, sintaxis, demo y buenas prácticas.
+   Se apilan verticalmente separadas por bordes.
+   ──────────────────────────────────────────────────────────── */
+.tag-card {
+  border-top: 1px solid var(--border);
+  padding: clamp(1.2rem, 3vw, 2rem) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* La última card cierra con borde inferior también */
+.tag-card:last-child { border-bottom: 1px solid var(--border); }
+
+/* Header de la card: contiene los badges de nombres de etiquetas */
+.tag-card > header {
+  display: flex;
+  flex-wrap: wrap; /* Los badges se envuelven si hay muchos */
+  gap: .5rem;
+}
+
+/* Badge azul con el nombre de la etiqueta HTML */
+.tag {
+  font-family: 'DM Mono', monospace;
+  font-size: .82rem;
+  color: var(--accent);
+  background: #eff6ff;
+  padding: .3rem .75rem;
+  border-radius: 4px;
+}
+
+/* Subtítulos internos de la card (Definición, Sintaxis, etc.) */
+.tag-card h4 {
+  font-family: 'DM Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: .5rem;
+}
+
+/* Texto descriptivo de cada sección dentro de la card */
+.tag-card p {
+  font-size: .93rem;
+  color: var(--accent2);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ── 9. BLOQUES DE CÓDIGO ────────────────────────────────────
+   Fondo azul oscuro con tipografía monoespaciada.
+   overflow-x permite scroll si el código es muy largo.
+   ──────────────────────────────────────────────────────────── */
+.code-block {
+  background: var(--code-bg);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: 'DM Mono', monospace;
+  font-size: .74rem;
+  color: #fff;
+  white-space: pre;  /* Preserva indentación y saltos de línea del código */
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+/* ── 10. CAJA DE DEMOSTRACIÓN ────────────────────────────────
+   Fondo gris claro que muestra el resultado visual
+   de cada etiqueta en acción.
+   ──────────────────────────────────────────────────────────── */
+.demo {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  font-size: .9rem;
+  overflow-x: auto; /* Scroll horizontal para tablas o contenido ancho */
+}
+
+/* Pequeño margen inferior para elementos dentro del demo */
+.demo * { margin-bottom: .3rem; }
+
+/* Estilos para tablas dentro de la demo box */
+.demo table { border-collapse: collapse; width: 100%; font-size: .82rem; }
+
+.demo th,
+.demo td { border: 1px solid var(--border); padding: .38rem .6rem; }
+
+/* Encabezados de tabla en monoespaciado, estilo técnico */
+.demo th {
+  background: var(--surface);
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ── 11. BUENAS PRÁCTICAS ────────────────────────────────────
+   Caja azul claro con lista de recomendaciones.
+   Aparece al final de cada tarjeta de etiqueta.
+   ──────────────────────────────────────────────────────────── */
+.tips {
+  background: #f8faff;
+  border: 1px solid #dbeafe;
+  border-radius: 6px;
+  padding: .85rem 1rem;
+  font-size: .88rem;
+}
+
+.tips ul { padding-left: 1.2rem; }
+.tips li { margin-bottom: .35rem; font-weight: 300; }
+
+/* Código inline dentro de las buenas prácticas */
+.tips code {
+  font-family: 'DM Mono', monospace;
+  font-size: .75rem;
+  background: #eff6ff;
+  color: var(--accent);
+  padding: .1rem .35rem;
+  border-radius: 3px;
+}
+
+/* ── 12. FORMULARIO FUNCIONAL ────────────────────────────────
+   Solo aparece en formularios.html.
+   Contiene fieldsets agrupados, inputs estilizados,
+   radios, checkboxes, select y textarea.
+   ──────────────────────────────────────────────────────────── */
+
+/* Contenedor principal del formulario demo */
+.form-demo {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: clamp(1.2rem, 4vw, 2.5rem);
+  max-width: 680px;
+}
+
+/* Grupos de campos con borde y título */
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Título del fieldset */
+legend { font-size: .82rem; font-weight: 500; padding: 0 .5rem; }
+
+/* Labels encima de cada campo */
+.form-demo label {
+  display: block;
+  font-size: .72rem;
+  color: var(--muted);
+  margin-bottom: .4rem;
+  font-weight: 500;
+}
+
+/* <p> como separador entre campos dentro del form */
+.form-demo p { margin-bottom: 1rem; }
+
+/* Estilos para inputs de texto, email, password, number, date, select y textarea */
+.form-demo input:not([type="radio"]):not([type="checkbox"]),
+.form-demo textarea,
+.form-demo select {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: .65rem .9rem;
+  color: var(--text);
+  font-size: .9rem;
+  font-weight: 300;
+  transition: border-color .15s, box-shadow .15s;
+  outline: none;
+  -webkit-appearance: none; /* Elimina estilos nativos del navegador en iOS */
+}
+
+/* Estado focus: borde azul y sombra suave */
+.form-demo input:focus,
+.form-demo textarea:focus,
+.form-demo select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59,130,246,.1);
+}
+
+/* Textarea redimensionable solo verticalmente */
+.form-demo textarea { resize: vertical; min-height: 80px; }
+
+/* Grupos de radio buttons */
+.radio-group,
+.check-group { display: flex; flex-direction: column; gap: .5rem; }
+
+/* Labels de radio y checkbox en fila con su input */
+.radio-group label,
+.check-group label {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  cursor: pointer;
+  font-size: .9rem;
+  font-weight: 300;
+}
+
+/* Color del radio/checkbox cuando está seleccionado */
+.form-demo input[type="radio"],
+.form-demo input[type="checkbox"] { accent-color: var(--accent); }
+
+/* Grid de dos columnas para campos edad y fecha lado a lado */
+.form-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ── 13. BOTONES ─────────────────────────────────────────────
+   Dos variantes: primario (azul relleno) y secundario (borde).
+   ──────────────────────────────────────────────────────────── */
+.btn {
+  font-size: .82rem;
+  font-weight: 500;
+  padding: .7rem 1.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+/* Botón primario — enviar formulario */
+.btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+.btn-primary:hover { background: #2563eb; border-color: #2563eb; }
+
+/* Botón secundario — limpiar formulario */
+.btn-secondary { background: transparent; color: var(--muted); border: 1px solid var(--border); margin-left: .75rem; }
+.btn-secondary:hover { border-color: var(--muted); color: var(--text); }
+
+/* Caja verde que aparece tras enviar el formulario con JS */
+#form-result {
+  display: none;  /* Oculta por defecto, el JS lo muestra al enviar */
+  margin-top: 1.2rem;
+  padding: 1rem 1.25rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+/* ── 14. SCROLLBAR PERSONALIZADA ─────────────────────────────
+   Solo funciona en navegadores basados en Chrome/Safari.
+   Hace la barra más delgada y discreta.
+   ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ── 15. RESPONSIVE ──────────────────────────────────────────
+   Dos breakpoints:
+   - 900px: tabletas y pantallas medianas
+   - 600px: móviles pequeños
+   ──────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+
+  /* Muestra el botón hamburguesa */
+  .menu-toggle { display: block; }
+
+  /* El nav se convierte en menú desplegable vertical */
+  .site-header nav {
+    display: none;               /* Oculto por defecto */
+    position: absolute;
+    top: 100%;                   /* Aparece justo debajo del header */
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    z-index: 99;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity .2s, transform .2s; /* Transición suave al abrir */
+  }
+
+  /* Estado activo: el JS añade esta clase al hacer click en hamburguesa */
+  .site-header nav.active {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Cada link ocupa toda la fila en el menú móvil */
+  .site-header nav a {
+    padding: .9rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    font-size: .88rem;
+  }
+
+  .site-header nav a:last-child { border-bottom: none; }
+
+  /* El hero pasa de dos columnas a una sola */
+  .hero { grid-template-columns: 1fr; }
+  .hero-img { max-height: 240px; overflow: hidden; }
+
+  /* El grid de edad/fecha pasa a una columna */
+  .form-cols { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+
+  /* Oculta la imagen del hero en pantallas muy pequeñas */
+  .hero-img { display: none; }
+
+  /* Botones ocupan el ancho completo */
+  .btn { width: 100%; text-align: center; }
+  .btn-secondary { margin-left: 0; margin-top: .6rem; }
+
+  /* Demos con dos columnas pasan a una sola */
+  .demo .cols {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* ── 16. ANIMACIÓN DE ENTRADA ────────────────────────────────
+   fadeUp: las secciones aparecen subiendo suavemente
+   desde abajo al cargar la página.
+   ──────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

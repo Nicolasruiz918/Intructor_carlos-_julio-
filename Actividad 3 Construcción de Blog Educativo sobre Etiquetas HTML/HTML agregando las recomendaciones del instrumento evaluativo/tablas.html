@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML — Etiquetas de Tablas</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- Página: Etiquetas de Tablas
+     Cubre: <table>, <thead>, <tbody>, <tr>, <th>, <td> -->
+
+<!-- HEADER: Barra de navegación fija, compartida por todas las páginas -->
+<header class="site-header">
+  <div>
+    <a href="#top" class="logo">HTML</a>
+    <!-- Botón hamburguesa: visible solo en móvil (≤ 900px) -->
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <!-- Nav: enlaces a todas las secciones del blog -->
+    <nav>
+      <a href="index.html">Estructurales</a>
+      <a href="texto.html">Texto</a>
+      <a href="listas.html">Listas</a>
+      <a href="formularios.html">Formularios</a>
+      <a href="tablas.html">Tablas</a>
+      <a href="multimedia.html">Multimedia</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CONTENIDO PRINCIPAL: todas las tarjetas de etiquetas de esta página -->
+<main>
+  <section class="category" id="tablas">
+    <h2>Etiquetas de Tablas</h2>
+
+    <article class="tag-card">
+      <!-- Nombres de etiqueta(s) mostrados como badges azules -->
+      <header>
+        <code class="tag">&lt;table&gt;</code>
+        <code class="tag">&lt;thead&gt;</code>
+        <code class="tag">&lt;tbody&gt;</code>
+        <code class="tag">&lt;tr&gt;</code>
+        <code class="tag">&lt;th&gt;</code>
+        <code class="tag">&lt;td&gt;</code>
+      </header>
+      <h4>Definiciones</h4>
+      <p>
+        <strong style="color:var(--accent)">&lt;table&gt;</strong> — Contenedor principal de la tabla.<br>
+        <strong style="color:var(--accent)">&lt;thead&gt;</strong> — Sección de encabezado de columnas.<br>
+        <strong style="color:var(--accent)">&lt;tbody&gt;</strong> — Cuerpo con los datos.<br>
+        <strong style="color:var(--accent)">&lt;tr&gt;</strong> — Fila (Table Row).<br>
+        <strong style="color:var(--accent)">&lt;th&gt;</strong> — Celda de encabezado (negrita, centrada).<br>
+        <strong style="color:var(--accent)">&lt;td&gt;</strong> — Celda de dato.
+      </p>
+      <h4>Sintaxis</h4>
+      <!-- Bloque de código: ejemplo de sintaxis de la etiqueta -->
+      <div class="code-block"><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Etiqueta&lt;/th&gt;
+      &lt;th&gt;Uso&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;header&gt;&lt;/td&gt;
+      &lt;td&gt;Cabecera&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></div>
+      <h4>Demostración visual</h4>
+      <!-- Demo visual: muestra cómo se ve la etiqueta en el navegador -->
+      <div class="demo">
+        <table>
+          <thead>
+            <tr><th>Etiqueta</th><th>Tipo</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>&lt;header&gt;</td><td>Estructural</td><td>Cabecera del doc.</td></tr>
+            <tr><td>&lt;nav&gt;</td><td>Estructural</td><td>Navegación</td></tr>
+            <tr><td>&lt;p&gt;</td><td>Texto</td><td>Párrafo</td></tr>
+            <tr><td>&lt;ul&gt;</td><td>Listas</td><td>Lista desordenada</td></tr>
+            <tr><td>&lt;form&gt;</td><td>Formulario</td><td>Formulario</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>Buenas prácticas</h4>
+      <!-- Buenas prácticas: consejos de uso correcto -->
+      <div class="tips"><ul>
+        <li>Tablas solo para datos tabulares, <strong>nunca</strong> para layout.</li>
+        <li>Usar <code>scope="col"</code> en <code>&lt;th&gt;</code> para accesibilidad.</li>
+        <li>Agregar <code>&lt;caption&gt;</code> para describir la tabla.</li>
+      </ul></div>
+    </article>
+
+  </section>
+</main>
+
+<!-- Script JS compartido por todas las páginas -->
+<script src="../js/script.js"></script>
+</body>
+</html>

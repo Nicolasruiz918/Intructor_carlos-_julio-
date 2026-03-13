@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+  <title>HTML — Blog Educativo</title>
+  <!-- Hoja de estilos principal compartida por todas las páginas -->
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- HEADER — Barra de navegación fija en la parte superior.
+     Contiene el logo, el botón hamburguesa (visible en móvil)
+     y los enlaces a todas las páginas del blog. -->
+<header class="site-header">
+  <div>
+    <!-- Logo: enlaza al inicio de la página -->
+    <a href="#top" class="logo">HTML</a>
+
+    <!-- Botón hamburguesa: visible solo en pantallas ≤ 900px.
+         El JS alterna la clase .active en el nav al hacer click -->
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+    <!-- Navegación principal: enlaces a todas las secciones del blog -->
+    <nav>
+      <a href="index.html">Estructurales</a>
+      <a href="texto.html">Texto</a>
+      <a href="listas.html">Listas</a>
+      <a href="formularios.html">Formularios</a>
+      <a href="tablas.html">Tablas</a>
+      <a href="multimedia.html">Multimedia</a>
+    </nav>
+  </div>
+</header>
+
+<!--  HERO — Sección de bienvenida. Solo existe en index.html.
+     Usa CSS Grid de dos columnas: texto a la izquierda,
+     imagen a la derecha. En móvil se apila en una columna.-->
+<section class="hero" id="top">
+
+  <!-- Columna izquierda: texto introductorio -->
+  <div>
+    <!-- Etiqueta pequeña decorativa encima del título -->
+    <p class="hero-tag">// un blog sencillo para entender HTML</p>
+    <h1>HTML desde lo básico</h1>
+    <p>Este es un blog para saber un poco sobre HTML y sus etiquetas. Nada muy avanzado, solo lo esencial para que entiendas para qué sirve cada una.</p>
+    <p><strong>¿Qué es HTML?</strong> Es el lenguaje que le dice al navegador cómo estructurar una página web: dónde va el título, los párrafos, las imágenes, los enlaces, las listas… básicamente el esqueleto de casi todo lo que ves en internet.</p>
+    <p>Aquí vas a encontrar etiquetas explicadas con ejemplos prácticos, definiciones claras y las cosas que realmente vale la pena tener en cuenta.</p>
+  </div>
+
+  <!-- Columna derecha: imagen decorativa de código -->
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Editor de código HTML" loading="lazy">
+  </div>
+
+</section>
+
+<!--CONTENIDO PRINCIPAL — Contiene todas las tarjetas
+     de etiquetas HTML de esta página (Estructurales). -->
+<main>
+
+  <!-- SECCIÓN: Etiquetas de estructura semántica -->
+  <section class="category" id="estructurales">
+    <h2>Etiquetas de Estructura Semántica</h2>
+
+    <!-- TARJETA: <header> -->
+    <article class="tag-card">
+      <!-- Nombre(s) de la etiqueta como badges azules -->
+      <header>
+        <code class="tag">&lt;header&gt;</code>
+      </header>
+      <h4>Definición</h4>
+      <p>Define la cabecera de una página o sección. Generalmente contiene el logotipo, título principal y navegación.</p>
+      <h4>Sintaxis</h4>
+      <div class="code-block"><code>&lt;header&gt;
+  &lt;h1&gt;Mi Sitio Web&lt;/h1&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;</code></div>
+      <h4>Demostración visual</h4>
+      <div class="demo">
+        <strong style="color:var(--accent2)">[HEADER]</strong> — Logotipo · Navegación · Título
+      </div>
+      <h4>Buenas prácticas</h4>
+      <div class="tips"><ul>
+        <li>No anidar <code>&lt;header&gt;</code> dentro de otro <code>&lt;header&gt;</code>.</li>
+        <li>Usarlo una sola vez por página (o por <code>&lt;article&gt;</code> / <code>&lt;section&gt;</code>).</li>
+        <li>Incluir la navegación principal aquí.</li>
+      </ul></div>
+    </article>
+
+    <!-- TARJETA: <nav> -->
+    <article class="tag-card">
+      <header>
+        <code class="tag">&lt;nav&gt;</code>
+      </header>
+      <h4>Definición</h4>
+      <p>Agrupa los enlaces de navegación principal del sitio. Ayuda a lectores de pantalla a identificar el menú.</p>
+      <h4>Sintaxis</h4>
+      <div class="code-block"><code>&lt;nav&gt;
+  &lt;a href="#inicio"&gt;Inicio&lt;/a&gt;
+  &lt;a href="#sobre"&gt;Sobre mí&lt;/a&gt;
+  &lt;a href="#contacto"&gt;Contacto&lt;/a&gt;
+&lt;/nav&gt;</code></div>
+      <h4>Demostración visual</h4>
+      <!-- Demo real del elemento nav con estilo inline -->
+      <div class="demo">
+        <nav style="display:flex;gap:.8rem">
+          <a href="#" style="color:var(--accent);text-decoration:none;font-size:.85rem">Inicio</a>
+          <a href="#" style="color:var(--accent);text-decoration:none;font-size:.85rem">Sobre mí</a>
+          <a href="#" style="color:var(--accent);text-decoration:none;font-size:.85rem">Contacto</a>
+        </nav>
+      </div>
+      <h4>Buenas prácticas</h4>
+      <div class="tips"><ul>
+        <li>Solo para bloques de navegación importantes.</li>
+        <li>Usar <code>&lt;ul&gt;</code> dentro para mejor accesibilidad.</li>
+      </ul></div>
+    </article>
+
+    <!-- TARJETA: <main> -->
+    <article class="tag-card">
+      <header>
+        <code class="tag">&lt;main&gt;</code>
+      </header>
+      <h4>Definición</h4>
+      <p>Contiene el contenido principal y único de la página. Solo debe existir uno por documento HTML.</p>
+      <h4>Sintaxis</h4>
+      <div class="code-block"><code>&lt;main&gt;
+  &lt;article&gt;...&lt;/article&gt;
+  &lt;section&gt;...&lt;/section&gt;
+&lt;/main&gt;</code></div>
+      <h4>Buenas prácticas</h4>
+      <div class="tips"><ul>
+        <li>Nunca repetir dentro de un mismo documento.</li>
+        <li>No incluir <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code> ni <code>&lt;nav&gt;</code> del sitio dentro.</li>
+      </ul></div>
+    </article>
+
+    <!-- TARJETA: <section> -->
+    <article class="tag-card">
+      <header>
+        <code class="tag">&lt;section&gt;</code>
+      </header>
+      <h4>Definición</h4>
+      <p>Agrupa contenido temáticamente relacionado. A diferencia de <code>&lt;div&gt;</code>, tiene significado semántico.</p>
+      <h4>Sintaxis</h4>
+      <div class="code-block"><code>&lt;section id="servicios"&gt;
+  &lt;h2&gt;Nuestros Servicios&lt;/h2&gt;
+  &lt;p&gt;Ofrecemos...&lt;/p&gt;
+&lt;/section&gt;</code></div>
+      <h4>Buenas prácticas</h4>
+      <div class="tips"><ul>
+        <li>Cada <code>&lt;section&gt;</code> debe tener un heading (<code>&lt;h2&gt;</code>–<code>&lt;h6&gt;</code>).</li>
+        <li>Si no tiene heading, usar <code>&lt;div&gt;</code> en su lugar.</li>
+      </ul></div>
+    </article>
+
+    <!-- TARJETA: <article> -->
+    <article class="tag-card">
+      <header>
+        <code class="tag">&lt;article&gt;</code>
+      </header>
+      <h4>Definición</h4>
+      <p>Representa contenido independiente y reutilizable: entrada de blog, noticia, tarjeta de producto, comentario, etc.</p>
+      <h4>Sintaxis</h4>
+      <div class="code-block"><code>&lt;article&gt;
+  &lt;h2&gt;Título del Post&lt;/h2&gt;
+  &lt;p&gt;Contenido del artículo...&lt;/p&gt;
+  &lt;footer&gt;Autor: Ana&lt;/footer&gt;
+&lt;/article&gt;</code></div>
+      <h4>Buenas prácticas</h4>
+      <div class="tips"><ul>
+        <li>El contenido debe tener sentido de forma independiente.</li>
+        <li>Puede contener su propio <code>&lt;header&gt;</code> y <code>&lt;footer&gt;</code>.</li>
+      </ul></div>
+    </article>
+
+    <!-- TARJETA: <aside> y <footer> (agrupadas por ser complementarias) -->
+    <article class="tag-card">
+      <header>
+        <code class="tag">&lt;aside&gt;</code>
+        <code class="tag">&lt;footer&gt;</code>
+      </header>
+      <h4>Definición — &lt;aside&gt;</h4>
+      <p>Contenido complementario pero no esencial: barra lateral, anuncios, enlaces relacionados.</p>
+      <h4>Definición — &lt;footer&gt;</h4>
+      <p>Pie de página o sección. Contiene datos de copyright, contacto, sitemap o créditos.</p>
+      <h4>Sintaxis</h4>
+      <div class="code-block"><code>&lt;aside&gt;
+  &lt;h3&gt;Artículos relacionados&lt;/h3&gt;
+&lt;/aside&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;&copy; 2025 HTMLpedia. SENA&lt;/p&gt;
+&lt;/footer&gt;</code></div>
+      <h4>Buenas prácticas</h4>
+      <div class="tips"><ul>
+        <li><code>&lt;aside&gt;</code>: no meter contenido crítico de la página.</li>
+        <li><code>&lt;footer&gt;</code>: incluir siempre info legal y de contacto.</li>
+      </ul></div>
+    </article>
+
+  </section>
+</main>
+
+<!-- Script JS compartido por todas las páginas -->
+<script src="../js/script.js"></script>
+</body>
+</html>

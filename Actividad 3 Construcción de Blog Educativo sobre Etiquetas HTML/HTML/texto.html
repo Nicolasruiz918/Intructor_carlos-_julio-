@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML — Etiquetas de Texto</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- Página: Etiquetas de Texto
+     Cubre: <h1>-<h6>, <p>, <span>, <strong>, <em>, <br>, <hr> -->
+
+<!-- HEADER: Barra de navegación fija, compartida por todas las páginas -->
+<header class="site-header">
+  <div>
+    <a href="#top" class="logo">HTML</a>
+    <!-- Botón hamburguesa: visible solo en móvil (≤ 900px) -->
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <!-- Nav: enlaces a todas las secciones del blog -->
+    <nav>
+      <a href="index.html">Estructurales</a>
+      <a href="texto.html">Texto</a>
+      <a href="listas.html">Listas</a>
+      <a href="formularios.html">Formularios</a>
+      <a href="tablas.html">Tablas</a>
+      <a href="multimedia.html">Multimedia</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CONTENIDO PRINCIPAL: todas las tarjetas de etiquetas de esta página -->
+<main>
+  <section class="category" id="texto">
+    <h2>Etiquetas de Texto y Contenido</h2>
+
+    <article class="tag-card">
+      <!-- Nombres de etiqueta(s) mostrados como badges azules -->
+      <header>
+        <code class="tag">&lt;h1&gt; – &lt;h6&gt;</code>
+      </header>
+      <h4>Definición</h4>
+      <p>Encabezados jerárquicos. <code>&lt;h1&gt;</code> es el más importante y debe aparecer una sola vez por página.</p>
+      <h4>Sintaxis</h4>
+      <!-- Bloque de código: ejemplo de sintaxis de la etiqueta -->
+      <div class="code-block"><code>&lt;h1&gt;Título Principal&lt;/h1&gt;
+&lt;h2&gt;Subtítulo&lt;/h2&gt;
+&lt;h3&gt;Sección&lt;/h3&gt;</code></div>
+      <h4>Demostración visual</h4>
+      <!-- Demo visual: muestra cómo se ve la etiqueta en el navegador -->
+      <div class="demo">
+        <h1 style="font-size:1.4rem;color:var(--accent)">H1 — Título Principal</h1>
+        <h2 style="font-size:1.1rem;color:var(--accent2)">H2 — Subtítulo</h2>
+        <h3 style="font-size:.95rem;color:var(--accent3)">H3 — Sección</h3>
+      </div>
+      <h4>Buenas prácticas</h4>
+      <!-- Buenas prácticas: consejos de uso correcto -->
+      <div class="tips"><ul>
+        <li>No saltar niveles (ej: de H1 a H4 directamente).</li>
+        <li>Un solo <code>&lt;h1&gt;</code> por página para SEO.</li>
+      </ul></div>
+    </article>
+
+    <article class="tag-card">
+      <!-- Nombres de etiqueta(s) mostrados como badges azules -->
+      <header>
+        <code class="tag">&lt;p&gt;</code>
+        <code class="tag">&lt;span&gt;</code>
+        <code class="tag">&lt;strong&gt;</code>
+        <code class="tag">&lt;em&gt;</code>
+      </header>
+      <h4>Definiciones</h4>
+      <p>
+        <strong style="color:var(--accent)">&lt;p&gt;</strong> — Párrafo de texto. Elemento de bloque.<br>
+        <strong style="color:var(--accent)">&lt;span&gt;</strong> — Contenedor en línea sin semántica propia.<br>
+        <strong style="color:var(--accent)">&lt;strong&gt;</strong> — Texto importante (negrita semántica).<br>
+        <strong style="color:var(--accent)">&lt;em&gt;</strong> — Énfasis (cursiva semántica).
+      </p>
+      <h4>Sintaxis</h4>
+      <!-- Bloque de código: ejemplo de sintaxis de la etiqueta -->
+      <div class="code-block"><code>&lt;p&gt;El &lt;strong&gt;HTML&lt;/strong&gt; es el
+&lt;em&gt;lenguaje base&lt;/em&gt; de la web.
+Usa &lt;span style="color:red"&gt;span&lt;/span&gt;
+para estilos en línea.&lt;/p&gt;</code></div>
+      <h4>Demostración visual</h4>
+      <!-- Demo visual: muestra cómo se ve la etiqueta en el navegador -->
+      <div class="demo">
+        <p>El <strong>HTML</strong> es el <em>lenguaje base</em> de la web. Usa <span style="color:var(--accent3)">span</span> para estilos en línea.</p>
+      </div>
+      <h4>Buenas prácticas</h4>
+      <!-- Buenas prácticas: consejos de uso correcto -->
+      <div class="tips"><ul>
+        <li>Usar <code>&lt;strong&gt;</code> / <code>&lt;em&gt;</code> con significado, no solo para estilo visual.</li>
+        <li>Para estilos visuales puros, preferir CSS sobre <code>&lt;b&gt;</code> / <code>&lt;i&gt;</code>.</li>
+      </ul></div>
+    </article>
+
+    <article class="tag-card">
+      <!-- Nombres de etiqueta(s) mostrados como badges azules -->
+      <header>
+        <code class="tag">&lt;br&gt;</code>
+        <code class="tag">&lt;hr&gt;</code>
+      </header>
+      <h4>Definiciones</h4>
+      <p>
+        <strong style="color:var(--accent)">&lt;br&gt;</strong> — Salto de línea dentro de un párrafo (dirección, poesía).<br>
+        <strong style="color:var(--accent)">&lt;hr&gt;</strong> — Separador horizontal temático entre secciones.
+      </p>
+      <h4>Sintaxis</h4>
+      <!-- Bloque de código: ejemplo de sintaxis de la etiqueta -->
+      <div class="code-block"><code>&lt;p&gt;Calle 45 # 12-30&lt;br&gt;
+Bogotá, Colombia&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Nueva sección&lt;/p&gt;</code></div>
+      <h4>Demostración visual</h4>
+      <!-- Demo visual: muestra cómo se ve la etiqueta en el navegador -->
+      <div class="demo">
+        <p style="font-size:.9rem">Calle 45 # 12-30<br>Bogotá, Colombia</p>
+        <hr style="border-color:var(--border);margin:.6rem 0">
+        <p style="font-size:.9rem">Nueva sección</p>
+      </div>
+      <h4>Buenas prácticas</h4>
+      <!-- Buenas prácticas: consejos de uso correcto -->
+      <div class="tips"><ul>
+        <li>No usar <code>&lt;br&gt;</code> para crear espacio visual — usar CSS <code>margin</code>.</li>
+        <li><code>&lt;hr&gt;</code> indica cambio temático, no solo decoración.</li>
+      </ul></div>
+    </article>
+
+  </section>
+</main>
+
+<!-- Script JS compartido por todas las páginas -->
+<script src="../js/script.js"></script>
+</body>
+</html>

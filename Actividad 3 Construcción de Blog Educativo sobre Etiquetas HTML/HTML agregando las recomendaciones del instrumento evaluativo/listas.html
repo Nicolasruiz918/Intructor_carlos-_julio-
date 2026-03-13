@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML — Etiquetas de Listas</title>
+  <!-- Hoja de estilos principal compartida por todas las páginas -->
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- HEADER: Barra de navegación fija, compartida por todas las páginas -->
+<header class="site-header">
+  <div>
+    <!-- Logo: enlaza al inicio de la página -->
+    <a href="#top" class="logo">HTML</a>
+    <!-- Botón hamburguesa: visible solo en móvil (≤ 900px) -->
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <!-- Nav: enlaces a todas las secciones del blog -->
+    <nav>
+      <a href="index.html">Estructurales</a>
+      <a href="texto.html">Texto</a>
+      <a href="listas.html">Listas</a>
+      <a href="formularios.html">Formularios</a>
+      <a href="tablas.html">Tablas</a>
+      <a href="multimedia.html">Multimedia</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CONTENIDO PRINCIPAL: todas las tarjetas de etiquetas de esta página -->
+<main>
+  <!-- SECCIÓN: Etiquetas de Listas -->
+  <section class="category" id="listas">
+    <h2>Etiquetas de Listas</h2>
+
+    <!-- TARJETA: <ul>, <ol>, <li> — listas desordenadas y ordenadas -->
+    <article class="tag-card">
+      <!-- Nombres de etiqueta(s) mostrados como badges -->
+      <header>
+        <code class="tag">&lt;ul&gt;</code>
+        <code class="tag">&lt;ol&gt;</code>
+        <code class="tag">&lt;li&gt;</code>
+      </header>
+      <h4>Definiciones</h4>
+      <p>
+        <!-- ul: lista con viñetas, el orden no importa -->
+        <strong style="color:var(--accent)">&lt;ul&gt;</strong> — Lista desordenada (viñetas).<br>
+        <!-- ol: lista numerada, el orden sí importa -->
+        <strong style="color:var(--accent)">&lt;ol&gt;</strong> — Lista ordenada (numerada).<br>
+        <!-- li: cada elemento individual de la lista -->
+        <strong style="color:var(--accent)">&lt;li&gt;</strong> — Ítem de lista.
+      </p>
+      <h4>Sintaxis</h4>
+      <!-- Bloque de código: ejemplo de uso de ul y ol con sus li -->
+      <div class="code-block"><code>&lt;ul&gt;
+  &lt;li&gt;Manzanas&lt;/li&gt;
+  &lt;li&gt;Naranjas&lt;/li&gt;
+   &lt;li&gt;Peras&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Instalar VS Code&lt;/li&gt;
+  &lt;li&gt;Crear index.html&lt;/li&gt;
+   &lt;li&gt;Abrir en navegador&lt;/li&gt;
+&lt;/ol&gt;</code></div>
+      <h4>Demostración visual</h4>
+      <!-- Demo visual: muestra ambos tipos de lista lado a lado en un grid -->
+      <div class="demo" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:.85rem">
+        <!-- Columna izquierda: lista desordenada con viñetas -->
+        <div>
+          <strong style="color:var(--muted);font-size:.75rem">UL (viñetas)</strong>
+          <ul style="padding-left:1.2rem;margin-top:.3rem">
+            <li>Manzanas</li>
+            <li>Naranjas</li>
+            <li>Peras</li>
+          </ul>
+        </div>
+        <!-- Columna derecha: lista ordenada numerada -->
+        <div>
+          <strong style="color:var(--muted);font-size:.75rem">OL (numerada)</strong>
+          <ol style="padding-left:1.2rem;margin-top:.3rem">
+            <li>Instalar VS Code</li>
+            <li>Crear index.html</li>
+            <li>Abrir en navegador</li>
+          </ol>
+        </div>
+      </div>
+      <h4>Buenas prácticas</h4>
+      <!-- Buenas prácticas: consejos de uso correcto -->
+      <div class="tips"><ul>
+        <li>Usar <code>&lt;ol&gt;</code> cuando el orden importa (pasos, ranking).</li>
+        <li>Usar <code>&lt;ul&gt;</code> para ítems sin jerarquía de orden.</li>
+        <li>Nunca poner elementos que no sean <code>&lt;li&gt;</code> directamente dentro.</li>
+      </ul></div>
+    </article>
+
+    <!-- TARJETA: <dl>, <dt>, <dd> — lista de definiciones (glosario) -->
+    <article class="tag-card">
+      <!-- Nombres de etiqueta(s) mostrados como badges -->
+      <header>
+        <code class="tag">&lt;dl&gt;</code>
+        <code class="tag">&lt;dt&gt;</code>
+        <code class="tag">&lt;dd&gt;</code>
+      </header>
+      <h4>Definiciones</h4>
+      <p>
+        <!-- dl: contenedor del glosario -->
+        <strong style="color:var(--accent)">&lt;dl&gt;</strong> — Lista de definiciones (glosario).<br>
+        <!-- dt: el término que se va a definir -->
+        <strong style="color:var(--accent)">&lt;dt&gt;</strong> — Término a definir.<br>
+        <!-- dd: la descripción o explicación del término -->
+        <strong style="color:var(--accent)">&lt;dd&gt;</strong> — Descripción o definición del término.
+      </p>
+      <h4>Sintaxis</h4>
+      <!-- Bloque de código: ejemplo de glosario con dl, dt y dd -->
+      <div class="code-block"><code>&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Cascading Style Sheets&lt;/dd&gt;
+&lt;/dl&gt;</code></div>
+      <h4>Demostración visual</h4>
+      <!-- Demo visual: muestra cómo se ve un glosario en el navegador -->
+      <div class="demo" style="font-size:.85rem">
+        <dl>
+          <!-- Término HTML con su definición -->
+          <dt style="font-weight:700;color:var(--accent)">HTML</dt>
+          <dd style="margin-left:1.2rem;color:var(--muted)">HyperText Markup Language</dd>
+          <!-- Término CSS con su definición -->
+          <dt style="font-weight:700;color:var(--accent);margin-top:.4rem">CSS</dt>
+          <dd style="margin-left:1.2rem;color:var(--muted)">Cascading Style Sheets</dd>
+        </dl>
+      </div>
+      <h4>Buenas prácticas</h4>
+      <!-- Buenas prácticas: consejos de uso correcto -->
+      <div class="tips"><ul>
+        <li>Ideal para glosarios, metadatos, FAQs.</li>
+        <li>Un <code>&lt;dt&gt;</code> puede tener múltiples <code>&lt;dd&gt;</code>.</li>
+      </ul></div>
+    </article>
+
+  </section>
+</main>
+
+<!-- Script JS compartido por todas las páginas -->
+<script src="../js/script.js"></script>
+</body>
+</html>

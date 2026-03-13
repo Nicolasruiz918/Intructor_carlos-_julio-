@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML — Etiquetas de Formularios</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- Página: Etiquetas de Formularios
+     Cubre: <form>, <label>, <input>, <textarea>, <select>,
+             <fieldset>, <legend>, <button> -->
+
+<!-- HEADER: Barra de navegación fija, compartida por todas las páginas -->
+<header class="site-header">
+  <div>
+    <a href="#top" class="logo">HTML</a>
+    <!-- Botón hamburguesa: visible solo en móvil (≤ 900px) -->
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <!-- Nav: enlaces a todas las secciones del blog -->
+    <nav>
+      <a href="index.html">Estructurales</a>
+      <a href="texto.html">Texto</a>
+      <a href="listas.html">Listas</a>
+      <a href="formularios.html">Formularios</a>
+      <a href="tablas.html">Tablas</a>
+      <a href="multimedia.html">Multimedia</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CONTENIDO PRINCIPAL: todas las tarjetas de etiquetas de esta página -->
+<main>
+  <section class="category" id="formularios">
+    <h2>Etiquetas de Formularios</h2>
+
+    <article class="tag-card">
+      <!-- Nombres de etiqueta(s) mostrados como badges azules -->
+      <header>
+        <code class="tag">&lt;form&gt;</code>
+        <code class="tag">&lt;label&gt;</code>
+        <code class="tag">&lt;input&gt;</code>
+      </header>
+      <h4>Definiciones</h4>
+      <p>
+        <strong style="color:var(--accent)">&lt;form&gt;</strong> — Contenedor de todos los controles. Define acción y método.<br>
+        <strong style="color:var(--accent)">&lt;label&gt;</strong> — Etiqueta descriptiva asociada a un control (mejora accesibilidad).<br>
+        <strong style="color:var(--accent)">&lt;input&gt;</strong> — Campo de entrada. Tipos: text, email, password, number, date, radio, checkbox, file, submit.
+      </p>
+      <h4>Sintaxis</h4>
+      <!-- Bloque de código: ejemplo de sintaxis de la etiqueta -->
+      <div class="code-block"><code>&lt;form action="/enviar" method="POST"&gt;
+  &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+  &lt;input type="text" id="nombre" name="nombre" required&gt;
+  &lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;</code></div>
+      <h4>Buenas prácticas</h4>
+      <!-- Buenas prácticas: consejos de uso correcto -->
+      <div class="tips"><ul>
+        <li>Siempre asociar <code>&lt;label&gt;</code> con <code>for</code> + <code>id</code>.</li>
+        <li>Usar <code>required</code>, <code>min</code>, <code>max</code> para validación nativa.</li>
+        <li>Especificar el <code>type</code> correcto en cada <code>&lt;input&gt;</code>.</li>
+      </ul></div>
+    </article>
+
+    <article class="tag-card">
+      <!-- Nombres de etiqueta(s) mostrados como badges azules -->
+      <header>
+        <code class="tag">&lt;textarea&gt;</code>
+        <code class="tag">&lt;select&gt;</code>
+        <code class="tag">&lt;fieldset&gt;</code>
+        <code class="tag">&lt;legend&gt;</code>
+        <code class="tag">&lt;button&gt;</code>
+      </header>
+      <h4>Definiciones</h4>
+      <p>
+        <strong style="color:var(--accent)">&lt;textarea&gt;</strong> — Campo de texto multilínea.<br>
+        <strong style="color:var(--accent)">&lt;select&gt; + &lt;option&gt;</strong> — Lista desplegable de opciones.<br>
+        <strong style="color:var(--accent)">&lt;fieldset&gt;</strong> — Agrupa controles relacionados.<br>
+        <strong style="color:var(--accent)">&lt;legend&gt;</strong> — Título del fieldset.<br>
+        <strong style="color:var(--accent)">&lt;button&gt;</strong> — Botón más versátil que input[type=submit].
+      </p>
+      <h4>Sintaxis</h4>
+      <!-- Bloque de código: ejemplo de sintaxis de la etiqueta -->
+      <div class="code-block"><code>&lt;fieldset&gt;
+  &lt;legend&gt;Preferencias&lt;/legend&gt;
+  &lt;select name="nivel"&gt;
+    &lt;option value="basico"&gt;Básico&lt;/option&gt;
+    &lt;option value="medio"&gt;Medio&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;textarea rows="4"&gt;&lt;/textarea&gt;
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/fieldset&gt;</code></div>
+      <h4>Buenas prácticas</h4>
+      <!-- Buenas prácticas: consejos de uso correcto -->
+      <div class="tips"><ul>
+        <li>Usar <code>&lt;button type="button"&gt;</code> dentro de forms para evitar envíos accidentales.</li>
+        <li><code>&lt;fieldset&gt;</code> mejora la accesibilidad en grupos de radio/checkbox.</li>
+      </ul></div>
+    </article>
+
+    <!-- ════════════════════════════════════════════════════
+         FORMULARIO FUNCIONAL DE DEMOSTRACIÓN
+         Al hacer submit llama a handleSubmit() en script.js.
+         Muestra los datos ingresados en el div #form-result.-->
+    <p style="margin-top:2rem;font-size:.9rem;color:var(--muted);font-family:'DM Mono',monospace">// Formulario funcional de demostración</p>
+
+    <div class="form-demo">
+      <!-- onsubmit llama a handleSubmit(event) definida en script.js -->
+      <form id="demoForm" onsubmit="handleSubmit(event)">
+
+        <!-- Grupo 1: campos de texto básicos + grid de 2 columnas -->
+        <fieldset>
+          <legend>Datos Personales</legend>
+          <p><label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre"></p>
+          <p><label for="email">Correo electrónico</label>
+          <input type="text" id="email" name="email" placeholder="correo@ejemplo.com"></p>
+          <p><label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres"></p>
+          <div class="form-cols">
+            <p><label for="edad">Edad</label>
+            <input type="number" id="edad" name="edad" placeholder="25"></p>
+            <p><label for="fecha">Fecha de nacimiento</label>
+            <input type="date" id="fecha" name="fecha"></p>
+          </div>
+        </fieldset>
+
+        <!-- Grupo 2: radio buttons — solo se puede elegir uno -->
+        <fieldset>
+          <legend>Nivel de HTML</legend>
+          <div class="radio-group">
+            <label><input type="radio" name="nivel" value="principiante"> Principiante</label>
+            <label><input type="radio" name="nivel" value="intermedio" checked> Intermedio</label>
+            <label><input type="radio" name="nivel" value="avanzado"> Avanzado</label>
+          </div>
+        </fieldset>
+
+        <!-- Grupo 3: checkboxes — se pueden elegir varios -->
+        <fieldset>
+          <legend>Temas de interés</legend>
+          <div class="check-group">
+            <label><input type="checkbox" name="temas" value="html" checked> HTML Semántico</label>
+            <label><input type="checkbox" name="temas" value="css"> CSS Avanzado</label>
+            <label><input type="checkbox" name="temas" value="js"> JavaScript</label>
+            <label><input type="checkbox" name="temas" value="a11y"> Accesibilidad</label>
+          </div>
+        </fieldset>
+
+        <!-- Grupo 4: select, file input y textarea -->
+        <fieldset>
+          <legend>Información adicional</legend>
+          <p><label for="pais">País</label>
+          <select id="pais" name="pais">
+            <option value="" selected>Selecciona tu país</option>
+            <option value="colombia">Colombia</option>
+            <option value="mexico">México</option>
+            <option value="argentina">Argentina</option>
+            <option value="españa">España</option>
+            <option value="otro">Otro</option>
+          </select></p>
+          <p><label for="archivo">Subir CV (demo)</label>
+          <input type="file" id="archivo" name="archivo" accept=".pdf,.doc"></p>
+          <p><label for="mensaje">Mensaje o comentario</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..."></textarea></p>
+        </fieldset>
+
+        <div>
+          <button type="submit" class="btn btn-primary">Enviar formulario</button>
+          <button type="reset" class="btn btn-secondary">Limpiar</button>
+        </div>
+
+        <!-- Resultado: oculto por defecto, el JS lo muestra al enviar -->
+        <div id="form-result"></div>
+      </form>
+    </div>
+
+  </section>
+</main>
+
+<!-- Script JS compartido por todas las páginas -->
+<script src="../js/script.js"></script>
+</body>
+</html>
