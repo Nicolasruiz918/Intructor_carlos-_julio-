@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehiculos</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav>
+  <ul class="menu">
+    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="banco.html">Banco</a></li>
+    <li><a href="inventario.html">Inventario</a></li>
+    <li><a href="estudiantes.html">Estudiantes</a></li>
+    <li><a href="carrito.html">Carrito</a></li>
+    <li><a href="vehiculos.html" class="activo">Vehiculos</a></li>
+    <li><a href="biblioteca.html">Biblioteca</a></li>
+  </ul>
+</nav>
+
+<h1>Control de Vehiculos</h1>
+
+<div class="formulario">
+  <h2>Registrar vehiculo</h2>
+  <div class="fila">
+    <div class="campo" style="flex:2">
+      <label>Nombre del vehiculo</label>
+      <input id="vNombre" placeholder="Ej: Camion 01">
+    </div>
+  </div>
+  <div class="botones">
+    <button onclick="crearVehiculo()">Registrar</button>
+  </div>
+  <p id="msgVeh" style="margin-top:10px;font-size:14px"></p>
+</div>
+
+<div class="formulario">
+  <h2>Flota activa</h2>
+  <div id="listaVehiculos">
+    <p style="color:#ccc;font-size:14px">Sin vehiculos registrados</p>
+  </div>
+</div>
+
+<script src="../js/vehiculos.js"></script>
+</body>
+</html>

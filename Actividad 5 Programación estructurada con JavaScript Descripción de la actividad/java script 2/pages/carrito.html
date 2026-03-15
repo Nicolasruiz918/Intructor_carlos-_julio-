@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- Modal pago -->
+<div id="modalPago" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;align-items:center;justify-content:center;padding:20px">
+  <div style="background:white;border-radius:10px;padding:28px;max-width:380px;width:100%;text-align:left">
+    <div id="modalContenido"></div>
+  </div>
+</div>
+
+<nav>
+  <ul class="menu">
+    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="banco.html">Banco</a></li>
+    <li><a href="inventario.html">Inventario</a></li>
+    <li><a href="estudiantes.html">Estudiantes</a></li>
+    <li><a href="carrito.html" class="activo">Carrito</a></li>
+    <li><a href="vehiculos.html">Vehículos</a></li>
+    <li><a href="biblioteca.html">Biblioteca</a></li>
+  </ul>
+</nav>
+
+<h1>Carrito de Compras</h1>
+
+<div class="formulario">
+  <div style="display:flex;gap:40px;margin-bottom:20px;flex-wrap:wrap">
+    <div><div id="cItems" style="font-size:1.8rem;font-weight:700;color:#1e3a8a">0</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Productos</div></div>
+    <div><div id="cTotal" style="font-size:1.8rem;font-weight:700;color:#1e3a8a">$0.00</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Total</div></div>
+  </div>
+
+  <h2>Agregar producto</h2>
+  <div class="fila">
+    <div class="campo" style="flex:2">
+      <label>Nombre del producto</label>
+      <input id="carProd" placeholder="Ej: Audífonos Sony">
+    </div>
+    <div class="campo">
+      <label>Precio $</label>
+      <input id="carPrecio" type="number" placeholder="0.00" min="0" step="0.01">
+    </div>
+  </div>
+  <div class="botones">
+    <button onclick="agregarCarrito()">Agregar</button>
+  </div>
+  <p id="msgCar" style="margin-top:10px;font-size:14px"></p>
+</div>
+
+<div class="formulario">
+  <h2>Artículos seleccionados</h2>
+  <ul id="listaCarrito" style="list-style:none;text-align:left">
+    <li style="color:#ccc;font-size:14px">Carrito vacío</li>
+  </ul>
+  <div id="carritoFooter" style="display:none">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0;padding-top:12px;border-top:1px solid #eee">
+      <span style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px">Total a pagar</span>
+      <span id="carTotalVal" style="font-size:1.2rem;font-weight:700"></span>
+    </div>
+    <button onclick="abrirModalPago()" style="width:100%">Realizar pago</button>
+  </div>
+</div>
+
+<script src="../js/carrito.js"></script>
+</body>
+</html>

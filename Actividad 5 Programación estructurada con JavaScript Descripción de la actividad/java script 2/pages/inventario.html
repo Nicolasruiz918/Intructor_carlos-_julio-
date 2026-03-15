@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav>
+  <ul class="menu">
+    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="banco.html">Banco</a></li>
+    <li><a href="inventario.html" class="activo">Inventario</a></li>
+    <li><a href="estudiantes.html">Estudiantes</a></li>
+    <li><a href="carrito.html">Carrito</a></li>
+    <li><a href="vehiculos.html">Vehículos</a></li>
+    <li><a href="biblioteca.html">Biblioteca</a></li>
+  </ul>
+</nav>
+
+<h1>Inventario de Productos</h1>
+
+<div class="formulario">
+  <div style="display:flex;gap:40px;margin-bottom:20px;flex-wrap:wrap">
+    <div><div id="invP" style="font-size:1.8rem;font-weight:700;color:#1e3a8a">0</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Productos</div></div>
+    <div><div id="invU" style="font-size:1.8rem;font-weight:700;color:#1e3a8a">0</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Unidades</div></div>
+    <div><div id="invT" style="font-size:1.8rem;font-weight:700;color:#1e3a8a">$0</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Valor total</div></div>
+  </div>
+
+  <h2>Registrar producto</h2>
+  <div class="fila">
+    <div class="campo" style="flex:2">
+      <label>Nombre</label>
+      <input id="pNombre" placeholder="Ej: MacBook Pro">
+    </div>
+    <div class="campo">
+      <label>Precio $</label>
+      <input id="pPrecio" type="number" placeholder="0.00" min="0" step="0.01">
+    </div>
+    <div class="campo">
+      <label>Cantidad</label>
+      <input id="pCantidad" type="number" placeholder="0" min="1">
+    </div>
+  </div>
+  <div class="botones">
+    <button onclick="agregarProducto()">Registrar</button>
+  </div>
+  <p id="msgInv" style="margin-top:10px;font-size:14px"></p>
+</div>
+
+<div class="formulario">
+  <h2>Productos en inventario</h2>
+  <ul id="listaProductos" style="list-style:none;text-align:left">
+    <li style="color:#ccc;font-size:14px">Sin productos aún</li>
+  </ul>
+  <div id="invTBar" style="display:none;margin-top:14px;padding-top:12px;border-top:1px solid #eee;display:none;justify-content:space-between;align-items:center">
+    <span style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px">Valor total del inventario</span>
+    <span id="invTVal" style="font-size:1.2rem;font-weight:700"></span>
+  </div>
+</div>
+
+<script src="../js/inventario.js"></script>
+</body>
+</html>

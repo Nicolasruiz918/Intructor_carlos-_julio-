@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav>
+  <ul class="menu">
+    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="banco.html">Banco</a></li>
+    <li><a href="inventario.html">Inventario</a></li>
+    <li><a href="estudiantes.html">Estudiantes</a></li>
+    <li><a href="carrito.html">Carrito</a></li>
+    <li><a href="vehiculos.html">Vehículos</a></li>
+    <li><a href="biblioteca.html" class="activo">Biblioteca</a></li>
+  </ul>
+</nav>
+
+<h1>Biblioteca</h1>
+
+<div class="formulario">
+  <div style="display:flex;gap:40px;margin-bottom:20px;flex-wrap:wrap">
+    <div><div id="lDisp" style="font-size:1.8rem;font-weight:700;color:#16a34a">0</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Disponibles</div></div>
+    <div><div id="lPrest" style="font-size:1.8rem;font-weight:700;color:#dc2626">0</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Prestados</div></div>
+  </div>
+
+  <h2>Registrar libro</h2>
+  <div class="fila">
+    <div class="campo" style="flex:2">
+      <label>Título del libro</label>
+      <input id="lTitulo" placeholder="Ej: Cien Años de Soledad">
+    </div>
+    <div class="campo" style="flex:1.5">
+      <label>Autor</label>
+      <input id="lAutor" placeholder="Ej: Gabriel García Márquez">
+    </div>
+  </div>
+  <div class="botones">
+    <button onclick="agregarLibro()">Agregar</button>
+  </div>
+  <p id="msgLib" style="margin-top:10px;font-size:14px"></p>
+</div>
+
+<div class="formulario">
+  <h2>Colección de libros</h2>
+  <ul id="listaLibros" style="list-style:none;text-align:left">
+    <li style="color:#ccc;font-size:14px">Sin libros registrados</li>
+  </ul>
+</div>
+
+<script src="../js/biblioteca.js"></script>
+</body>
+</html>

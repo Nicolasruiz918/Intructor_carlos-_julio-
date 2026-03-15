@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banco</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav>
+  <ul class="menu">
+    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="banco.html" class="activo">Banco</a></li>
+    <li><a href="inventario.html">Inventario</a></li>
+    <li><a href="estudiantes.html">Estudiantes</a></li>
+    <li><a href="carrito.html">Carrito</a></li>
+    <li><a href="vehiculos.html">Vehículos</a></li>
+    <li><a href="biblioteca.html">Biblioteca</a></li>
+  </ul>
+</nav>
+
+<h1>Sistema Bancario</h1>
+
+<div class="formulario">
+  <h2>Crear nueva cuenta</h2>
+  <div class="fila">
+    <div class="campo">
+      <label>Nombre del cliente</label>
+      <input id="cliNombre" placeholder="Ej: María García">
+    </div>
+  </div>
+  <div class="botones">
+    <button onclick="crearCuenta()">Crear cuenta</button>
+  </div>
+  <p id="msgCC" style="margin-top:10px;font-size:14px"></p>
+</div>
+
+<div class="formulario" id="bancoOperCard" style="display:none">
+  <h2>Seleccionar cuenta activa</h2>
+  <div id="cuentaChips" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"></div>
+
+  <div style="display:flex;gap:40px;margin-bottom:20px;flex-wrap:wrap">
+    <div>
+      <div id="bSaldo" style="font-size:1.8rem;font-weight:700;color:#1e3a8a">$0.00</div>
+      <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Saldo actual</div>
+    </div>
+    <div>
+      <div id="bOps" style="font-size:1.8rem;font-weight:700;color:#1e3a8a">0</div>
+      <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Operaciones</div>
+    </div>
+  </div>
+
+  <h2>Realizar operación</h2>
+  <div class="fila">
+    <div class="campo">
+      <label>Monto ($)</label>
+      <input id="monto" type="number" placeholder="0.00" min="0" step="0.01">
+    </div>
+  </div>
+  <div class="botones">
+    <button class="btn-verde" onclick="depositar()">Depositar</button>
+    <button class="btn-rojo" onclick="retirar()">Retirar</button>
+  </div>
+  <p id="msgBOp" style="margin-top:10px;font-size:14px"></p>
+
+  <hr style="margin:20px 0;border:none;border-top:1px solid #eee">
+  <h2>Historial — <span id="nombreCuentaActiva" style="color:#2563eb;font-weight:normal;text-transform:none;letter-spacing:0"></span></h2>
+  <div id="histBanco" style="margin-top:10px;display:flex;flex-direction:column;gap:6px"></div>
+</div>
+
+<script src="../js/banco.js"></script>
+</body>
+</html>
