@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mercat API</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════
+       HEADER
+       ═══════════════════════════ -->
+    <header class="app-header">
+        <div class="logo">Mercat <span>API Dashboard</span></div>
+        <ul class="nav-tabs-custom" id="mainTabs">
+            <li>
+                <button class="nav-link active" onclick="showTab('products', this)">
+                    🛍 Productos
+                </button>
+            </li>
+            <li>
+                <button class="nav-link" onclick="showTab('users', this)">
+                    👤 Usuarios
+                </button>
+            </li>
+        </ul>
+    </header>
+
+    <div class="app-body">
+
+        <!-- ═══════════════════════════
+         TAB: PRODUCTOS
+         ═══════════════════════════ -->
+        <div id="tab-products" class="tab-pane">
+
+            <div class="section-header">
+                <div>
+                    <h1 class="section-title">Lista de <em>Productos</em></h1>
+                    <p class="section-sub">localhost:3000/products</p>
+                </div>
+                <div class="toolbar">
+                    <div class="search-wrap">
+                        <span class="icon">🔍</span>
+                        <input id="idProductFilter" class="search-input" type="number" placeholder="Buscar por ID…"
+                            onchange="getFindByIdProduct()" />
+                    </div>
+                    <button class="btn-outline" onclick="clearProductSearch()">Ver todos</button>
+                    <button class="btn-gold" onclick="getAllProducts()">↻ Actualizar</button>
+                </div>
+            </div>
+
+            <div class="status-bar">
+                <div class="stat-pill">
+                    <div class="dot"></div> Servidor activo
+                </div>
+                <div class="stat-pill">Total: <strong id="productCount">—</strong></div>
+            </div>
+
+            <div class="table-wrap">
+                <table class="app-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Marca</th>
+                            <th>Precio</th>
+                            <th>Rating</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody id="containerProducts">
+                        <tr>
+                            <td colspan="7" class="loading-cell">
+                                <div class="spinner"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div><!-- /tab-products -->
+
+
+        <!-- ═══════════════════════════
+         TAB: USUARIOS
+         ═══════════════════════════ -->
+        <div id="tab-users" class="tab-pane" style="display:none">
+
+            <div class="section-header">
+                <div>
+                    <h1 class="section-title">Lista de <em class="u">Usuarios</em></h1>
+                    <p class="section-sub">localhost:3000/users</p>
+                </div>
+                <div class="toolbar">
+                    <div class="search-wrap">
+                        <span class="icon">🔍</span>
+                        <input id="idUserFilter" class="search-input" type="number" placeholder="Buscar por ID…"
+                            onchange="getFindByIdUser()" />
+                    </div>
+                    <button class="btn-outline" onclick="clearUserSearch()">Ver todos</button>
+                    <button class="btn-gold" onclick="getAllUsers()">↻ Actualizar</button>
+                </div>
+            </div>
+
+            <div class="status-bar">
+                <div class="stat-pill">
+                    <div class="dot" style="background:var(--accent2)"></div> Servidor activo
+                </div>
+                <div class="stat-pill">Total: <strong id="userCount">—</strong></div>
+            </div>
+
+            <div class="table-wrap">
+                <table class="app-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Ciudad</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody id="containerUsers">
+                        <tr>
+                            <td colspan="7" class="loading-cell">
+                                <div class="spinner"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div><!-- /tab-users -->
+
+    </div><!-- /app-body -->
+
+    <!-- Toast -->
+    <div class="toast-custom" id="toast"></div>
+
+    <!-- MODAL: Detalle de producto -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal" id="productModal">
+            <div class="modal-header">
+                <span class="modal-label">Detalle del producto</span>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="./js/const.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/products.js"></script>
+    <script src="./js/users.js"></script>
+
+    <script>
+        /* ── Tabs ── */
+        function showTab(tabId, btn) {
+            document.querySelectorAll('.tab-pane').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).style.display = 'block';
+            btn.classList.add('active');
+            if (tabId === 'products') getAllProducts();
+            if (tabId === 'users') getAllUsers();
+        }
+
+        /* ── Limpiar búsquedas ── */
+        function clearProductSearch() {
+            document.getElementById('idProductFilter').value = '';
+            getAllProducts();
+        }
+        function clearUserSearch() {
+            document.getElementById('idUserFilter').value = '';
+            getAllUsers();
+        }
+
+        /* ── Inicio ── */
+        document.addEventListener('DOMContentLoaded', getAllProducts);
+    </script>
+
+</body>
+
+</html>
